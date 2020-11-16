@@ -6,3 +6,9 @@ add_subdirectory(glad)
 
 # GLM
 add_subdirectory(glm)
+
+# GLFW
+add_subdirectory(glfw)
+
+# IMGUI
+add_subdirectory(imgui)
