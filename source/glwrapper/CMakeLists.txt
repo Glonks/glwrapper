@@ -12,9 +12,8 @@ set(sources
 )
 
 add_library(${target}
-	STATIC
-		${headers}
-		${sources}
+	${headers}
+	${sources}
 )
 
 target_include_directories(${target}
