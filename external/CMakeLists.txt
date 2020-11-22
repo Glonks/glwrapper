@@ -12,3 +12,6 @@ add_subdirectory(glfw)
 
 # IMGUI
 add_subdirectory(imgui)
+
+# STB
+add_subdirectory(stb_image)

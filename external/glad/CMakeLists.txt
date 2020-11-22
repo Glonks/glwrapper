@@ -1,7 +1,7 @@
 set(target glad)
 
 set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include")
-set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/src")
+set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(headers
 	${include_path}/glad/glad.h
