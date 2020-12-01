@@ -1,4 +1,4 @@
-/* stb_image - v2.26 - public domain image loader - http://nothings.org/stb
+/* stb - v2.26 - public domain image loader - http://nothings.org/stb
                                   no warranty implied; use at your own risk
 
    Do this:
@@ -10,7 +10,7 @@
    #include ...
    #include ...
    #define STB_IMAGE_IMPLEMENTATION
-   #include "stb_image.h"
+   #include "stb.h"
 
    You can #define STBI_ASSERT(x) before the #include to avoid using assert.h.
    And #define STBI_MALLOC, STBI_REALLOC, and STBI_FREE to avoid using malloc,realloc,free
@@ -116,7 +116,7 @@ RECENT REVISION HISTORY:
                      DO NOT ADD YOUR NAME HERE
 
   To add your name to the credits, pick a random blank space in the middle and fill it.
-  80% of merge conflicts on stb_image PRs are due to people adding their name at the end
+  80% of merge conflicts on stb PRs are due to people adding their name at the end
   of the credits.
 */
 
@@ -190,7 +190,7 @@ RECENT REVISION HISTORY:
 //
 // Philosophy
 //
-// stb_image libraries are designed with the following priorities:
+// stb libraries are designed with the following priorities:
 //
 //    1. easy to use
 //    2. easy to maintain
@@ -200,7 +200,7 @@ RECENT REVISION HISTORY:
 // and for best performance I may provide less-easy-to-use APIs that give higher
 // performance, in addition to the easy-to-use ones. Nevertheless, it's important
 // to keep in mind that from the standpoint of you, a client of this library,
-// all you care about is #1 and #3, and stb_image libraries DO NOT emphasize #3 above all.
+// all you care about is #1 and #3, and stb libraries DO NOT emphasize #3 above all.
 //
 // Some secondary priorities arise directly from the first two, some of which
 // provide more explicit reasons why performance can't be emphasized.
@@ -246,7 +246,7 @@ RECENT REVISION HISTORY:
 //
 // HDR image support   (disable by defining STBI_NO_HDR)
 //
-// stb_image supports loading HDR images in general, and currently the Radiance
+// stb supports loading HDR images in general, and currently the Radiance
 // .HDR file format specifically. You can still load any file through the existing
 // interface; if you attempt to load an HDR file, it will be automatically remapped
 // to LDR, assuming gamma 2.2 and an arbitrary scale factor defaulting to 1;
@@ -327,11 +327,11 @@ RECENT REVISION HISTORY:
 //   - If you use STBI_NO_PNG (or _ONLY_ without PNG), and you still
 //     want the zlib decoder to be available, #define STBI_SUPPORT_ZLIB
 //
-//  - If you define STBI_MAX_DIMENSIONS, stb_image will reject images greater
+//  - If you define STBI_MAX_DIMENSIONS, stb will reject images greater
 //    than that size (in either width or height) without further processing.
 //    This is to let programs in the wild set an upper bound to prevent
 //    denial-of-service attacks on untrusted data, as one could generate a
-//    valid image of gigantic dimensions and force stb_image to allocate a
+//    valid image of gigantic dimensions and force stb to allocate a
 //    huge block of memory and spend disproportionate time decoding it. By
 //    default this is set to (1 << 24), which is 16777216, but that's still
 //    very big.
@@ -950,7 +950,7 @@ static void *stbi__malloc(size_t size)
     return STBI_MALLOC(size);
 }
 
-// stb_image uses ints pervasively, including for offset calculations.
+// stb uses ints pervasively, including for offset calculations.
 // therefore the largest decoded image size we can support with the
 // current code, even on 64-bit targets, is INT_MAX. this is not a
 // significant limitation for the intended use case.
@@ -6365,7 +6365,7 @@ static int stbi__pic_test(stbi__context *s)
 #endif
 
 // *************************************************************************************************
-// GIF loader -- public domain by Jean-Marc Lienher -- simplified/shrunk by stb_image
+// GIF loader -- public domain by Jean-Marc Lienher -- simplified/shrunk by stb
 
 #ifndef STBI_NO_GIF
 typedef struct
@@ -6590,7 +6590,7 @@ static stbi_uc *stbi__process_gif_raster(stbi__context *s, stbi__gif *g)
    }
 }
 
-// this function is designed to support animated gifs, although stb_image doesn't support it
+// this function is designed to support animated gifs, although stb doesn't support it
 // two back is the image from two frames ago, used for a very specific disposal format
 static stbi_uc *stbi__gif_load_next(stbi__context *s, stbi__gif *g, int *comp, int req_comp, stbi_uc *two_back)
 {
@@ -7587,15 +7587,15 @@ STBIDEF int stbi_is_16_bit_from_callbacks(stbi_io_callbacks const *c, void *user
       2.01  (2015-01-17) fix various warnings; suppress SIMD on gcc 32-bit without -msse2
       2.00b (2014-12-25) fix STBI_MALLOC in progressive JPEG
       2.00  (2014-12-25) optimize JPG, including x86 SSE2 & NEON SIMD (ryg)
-                         progressive JPEG (stb_image)
+                         progressive JPEG (stb)
                          PGM/PPM support (Ken Miller)
                          STBI_MALLOC,STBI_REALLOC,STBI_FREE
                          GIF bugfix -- seemingly never worked
                          STBI_NO_*, STBI_ONLY_*
       1.48  (2014-12-14) fix incorrectly-named assert()
-      1.47  (2014-12-14) 1/2/4-bit PNG support, both direct and paletted (Omar Cornut & stb_image)
+      1.47  (2014-12-14) 1/2/4-bit PNG support, both direct and paletted (Omar Cornut & stb)
                          optimize PNG (ryg)
-                         fix bug in interlaced PNG with user-specified channel count (stb_image)
+                         fix bug in interlaced PNG with user-specified channel count (stb)
       1.46  (2014-08-26)
               fix broken tRNS chunk (colorkey-style transparency) in non-paletted PNG
       1.45  (2014-08-16)

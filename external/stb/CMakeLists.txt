@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-set(target stb_image)
+set(target stb)
 
 set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
