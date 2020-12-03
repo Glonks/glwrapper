@@ -9,9 +9,11 @@
 
 namespace glwrapper {
 
-    class GLShader : public Shader, public Instantiator<GLShader> {
+    class GLShader : public Shader, Instantiator<Shader> {
     public:
         GLShader(const std::string& filePath)
+
+        static
 
     private:
 
