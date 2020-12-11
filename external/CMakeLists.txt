@@ -15,3 +15,6 @@ add_subdirectory(imgui)
 
 # STB
 add_subdirectory(stb)
+
+# SPDLOG
+add_subdirectory(spdlog)
