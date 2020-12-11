@@ -1,7 +1,5 @@
 #pragma once
 
-#include <glad/glad.h>
-
 #include <glwrapper/base/Instantiator.h>
 #include <glwrapper/base/Source.h>
 
@@ -19,6 +17,7 @@ namespace glwrapper {
     private:
         std::string m_filePath;
         mutable std::string m_source;
+        mutable bool m_valid;
     };
 
 }

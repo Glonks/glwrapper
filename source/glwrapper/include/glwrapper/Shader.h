@@ -1,19 +1,30 @@
 #pragma once
 
+#include <glwrapper/base/Source.h>
+
+#include <glad/glad.h>
+
+#include <string>
+#include <memory>
+
 namespace glwrapper {
 
     class Shader {
     public:
-        virtual ~Shader() = default;
+        Shader(const GLenum shaderType, Source* source);
+        virtual ~Shader();
 
-        static fromString(const std::string& string) const;
-        static fromFile(const std::string& filePath) const;
+        void compile() const;
 
-        virtual void bind() = 0;
-        virtual void unbind() = 0;
+        GLuint id() const;
+        GLenum type() const;
+        bool isCompiled() const;
 
-    protected:
-
+    private:
+        GLuint m_id;
+        Source* m_source;
+        GLenum m_type;
+        mutable bool m_compiled;
     };
 
 }
