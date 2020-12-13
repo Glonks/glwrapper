@@ -1,5 +1,6 @@
 #pragma once
 
+#include <glwrapper/base/Instantiator.h>
 #include <glwrapper/base/Source.h>
 
 #include <glad/glad.h>
@@ -9,10 +10,13 @@
 
 namespace glwrapper {
 
-    class Shader {
+    class Shader : public Instantiator<Shader> {
     public:
-        Shader(const GLenum shaderType, Source* source);
+        Shader(GLenum type, std::shared_ptr<Source> source);
         virtual ~Shader();
+
+        static std::shared_ptr<Shader> fromFile(GLenum type, const std::string& filePath);
+        static std::shared_ptr<Shader> fromString(GLenum type, const std::string& string);
 
         void compile() const;
 
@@ -22,7 +26,7 @@ namespace glwrapper {
 
     private:
         GLuint m_id;
-        Source* m_source;
+        std::shared_ptr<Source> m_source;
         GLenum m_type;
         mutable bool m_compiled;
     };

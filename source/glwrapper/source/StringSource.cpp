@@ -1,4 +1,4 @@
-#include <glwrapper/base/StringSource.h>
+#include <glwrapper/StringSource.h>
 
 namespace glwrapper {
 

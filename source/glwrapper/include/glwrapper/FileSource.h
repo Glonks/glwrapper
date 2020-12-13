@@ -9,10 +9,11 @@ namespace glwrapper {
     public:
         explicit FileSource(const std::string& filePath);
 
+        void load() const;
+
         std::string string() const override;
         std::string info() const override;
-
-        void load() const;
+        bool isValid() const;
 
     private:
         std::string m_filePath;

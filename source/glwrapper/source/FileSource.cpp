@@ -1,4 +1,4 @@
-#include <glwrapper/base/FileSource.h>
+#include <glwrapper/FileSource.h>
 #include <glwrapper/base/Log.h>
 
 #include <fstream>
@@ -9,15 +9,9 @@ namespace glwrapper {
         load();
     }
 
-    std::string FileSource::string() const {
-        return m_source;
-    }
-
-    std::string FileSource::info() const {
-        return m_filePath;
-    }
-
     void FileSource::load() const {
+        m_valid = false;
+
         auto mode = std::ios::in | std::ios::ate;
         std::ifstream file(m_filePath, mode);
 
@@ -39,6 +33,18 @@ namespace glwrapper {
         m_source.resize(static_cast<std::size_t>(file.gcount()));
 
         m_valid = true;
+    }
+
+    std::string FileSource::string() const {
+        return m_source;
+    }
+
+    std::string FileSource::info() const {
+        return m_filePath;
+    }
+
+    bool FileSource::isValid() const {
+        return m_valid;
     }
 
 }
