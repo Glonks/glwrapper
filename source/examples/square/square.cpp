@@ -50,7 +50,13 @@ int main() {
         float vertices[] = {
                 -0.5f, -0.5f,
                 0.5f, -0.5f,
-                0.0f, 0.5f
+                0.5f, 0.5f,
+                -0.5f, 0.5f
+        };
+
+        unsigned int indices[] = {
+                0, 1, 2,
+                2, 3, 0
         };
 
         auto vao = glwrapper::VertexArray::createUnique();
@@ -62,6 +68,10 @@ int main() {
 
         vao->enable(0);
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), reinterpret_cast<const void*>(0)); // Replace with VertexArray func
+
+        auto ibo = glwrapper::Buffer::createUnique();
+        ibo->bind(GL_ELEMENT_ARRAY_BUFFER);
+        ibo->setData(indices, GL_STATIC_DRAW);
 
         glwrapper::Buffer::unbind(GL_ARRAY_BUFFER);
         glwrapper::VertexArray::unbind();
@@ -105,7 +115,7 @@ int main() {
             program->setUniform("trans", 0.5f);
 
             vao->bind();
-            vao->drawArrays(GL_TRIANGLES, 0, 3);
+            vao->drawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
             glfwSwapBuffers(window);
             glfwPollEvents();

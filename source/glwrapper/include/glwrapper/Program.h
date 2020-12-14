@@ -20,15 +20,16 @@ namespace glwrapper {
         static void unbind();
 
         void attach(std::shared_ptr<Shader> shader);
+
         template <typename ...Shaders>
         void attach(std::shared_ptr<Shader> shader, Shaders ... shaders);
 
         void detach(std::shared_ptr<Shader> shader);
 
-        const std::set<std::shared_ptr<Shader>>& shaders() const;
-
         void link() const;
         void validate() const;
+
+        void dispatchCompute(GLuint numGroupsX, GLuint numGroupsY, GLuint numGroupsZ) const;
 
         void setUniform(const std::string& name, const float& value) const;
         void setUniform(const std::string& name, const int& value) const;
@@ -63,6 +64,7 @@ namespace glwrapper {
         GLuint id() const;
         bool isLinked() const;
         bool isValid() const;
+        const std::set<std::shared_ptr<Shader>>& shaders() const;
 
     private:
         GLuint m_id;

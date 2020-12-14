@@ -15,6 +15,7 @@ set(headers
 	${include_path}/Shader.h
 	${include_path}/Program.h
 	${include_path}/Buffer.h
+	${include_path}/VertexArray.h
 )
 
 set(sources
@@ -25,6 +26,8 @@ set(sources
 	${source_path}/FileSource.cpp
 	${source_path}/Shader.cpp
 	${source_path}/Program.cpp
+	${source_path}/Buffer.cpp
+	${source_path}/VertexArray.cpp
 )
 
 add_library(${target}

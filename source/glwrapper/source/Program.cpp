@@ -30,10 +30,6 @@ namespace glwrapper {
         glDetachShader(m_id, shader->id());
     }
 
-    const std::set<std::shared_ptr<Shader>>& Program::shaders() const {
-        return m_shaders;
-    }
-
     void Program::link() const {
         m_linked = false;
 
@@ -74,6 +70,11 @@ namespace glwrapper {
 
     void Program::unbind() {
         glUseProgram(0);
+    }
+
+    void Program::dispatchCompute(GLuint numGroupsX, GLuint numGroupsY, GLuint numGroupsZ) const {
+        bind();
+        glDispatchCompute(numGroupsX, numGroupsY, numGroupsZ);
     }
 
     void Program::setUniform(const std::string& name, const float& value) const {
@@ -177,6 +178,10 @@ namespace glwrapper {
         glGetProgramiv(m_id, GL_VALIDATE_STATUS, &valid);
 
         return valid == 1;
+    }
+
+    const std::set<std::shared_ptr<Shader>>& Program::shaders() const {
+        return m_shaders;
     }
 
     GLuint Program::getUniformLocation(const std::string& name) const {
