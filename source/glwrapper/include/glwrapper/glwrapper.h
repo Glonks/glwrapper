@@ -7,5 +7,5 @@
 #include <glwrapper/FileSource.h>
 #include <glwrapper/Program.h>
 #include <glwrapper/Shader.h>
-#include <glwrapper/VertexArray.h>
 #include <glwrapper/Buffer.h>
+#include <glwrapper/VertexArray.h>

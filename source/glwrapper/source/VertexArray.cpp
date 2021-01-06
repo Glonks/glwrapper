@@ -26,6 +26,14 @@ namespace glwrapper {
         glDisableVertexArrayAttrib(m_id, index);
     }
 
+    void VertexArray::bindElementBuffer(const std::shared_ptr<Buffer>& buffer) {
+        glVertexArrayElementBuffer(m_id, buffer ? buffer->id() : 0);
+    }
+
+    void VertexArray::bindVertexBuffer(const std::shared_ptr<Buffer>& buffer) {
+        
+    }
+
     void VertexArray::drawArrays(GLenum mode, GLint first, GLsizei count) const {
         bind();
         glDrawArrays(mode, first, count);
@@ -36,7 +44,7 @@ namespace glwrapper {
         glDrawElements(mode, count, type, indices);
     }
 
-    GLint VertexArray::id() const {
+    GLuint VertexArray::id() const {
         return m_id;
     }
 

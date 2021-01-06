@@ -69,9 +69,10 @@ int main() {
         vao->enable(0);
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), reinterpret_cast<const void*>(0)); // Replace with VertexArray func
 
-        auto ibo = glwrapper::Buffer::createUnique();
-        ibo->bind(GL_ELEMENT_ARRAY_BUFFER);
+        auto ibo = glwrapper::Buffer::createShared();
         ibo->setData(indices, GL_STATIC_DRAW);
+
+        vao->bindElementBuffer(ibo);
 
         glwrapper::Buffer::unbind(GL_ARRAY_BUFFER);
         glwrapper::VertexArray::unbind();
@@ -107,12 +108,11 @@ int main() {
                 glwrapper::Shader::fromString(GL_FRAGMENT_SHADER, frag)
         );
         program->link();
+        program->setUniform("trans", 0.5f);
+        program->bind();
 
         while (!glfwWindowShouldClose(window)) {
             glClear(GL_COLOR_BUFFER_BIT);
-
-            program->bind();
-            program->setUniform("trans", 0.5f);
 
             vao->bind();
             vao->drawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
