@@ -16,6 +16,7 @@ set(headers
 	${include_path}/Program.h
 	${include_path}/Buffer.h
 	${include_path}/VertexArray.h
+	${include_path}/VertexBindingPoint.h
 )
 
 set(sources
@@ -28,6 +29,7 @@ set(sources
 	${source_path}/Program.cpp
 	${source_path}/Buffer.cpp
 	${source_path}/VertexArray.cpp
+	${source_path}/VertexBindingPoint.cpp
 )
 
 add_library(${target}

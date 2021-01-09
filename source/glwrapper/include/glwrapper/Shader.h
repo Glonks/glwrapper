@@ -1,7 +1,6 @@
 #pragma once
 
 #include <glwrapper/base/Instantiator.h>
-#include <glwrapper/base/Source.h>
 
 #include <glad/glad.h>
 
@@ -9,6 +8,8 @@
 #include <memory>
 
 namespace glwrapper {
+
+    class Source;
 
     class Shader : public Instantiator<Shader> {
     public:

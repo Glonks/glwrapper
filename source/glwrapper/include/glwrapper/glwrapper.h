@@ -9,3 +9,4 @@
 #include <glwrapper/Shader.h>
 #include <glwrapper/Buffer.h>
 #include <glwrapper/VertexArray.h>
+#include <glwrapper/VertexBindingPoint.h>

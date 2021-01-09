@@ -59,23 +59,24 @@ int main() {
                 2, 3, 0
         };
 
-        auto vao = glwrapper::VertexArray::createUnique();
+        auto vao = glwrapper::VertexArray::createShared();
         vao->bind();
 
-        auto vbo = glwrapper::Buffer::createUnique();
+        auto vbo = glwrapper::Buffer::createShared();
         vbo->bind(GL_ARRAY_BUFFER);
         vbo->setData(vertices, GL_STATIC_DRAW);
 
         vao->enable(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), reinterpret_cast<const void*>(0)); // Replace with VertexArray func
+
+        auto binding = vao->binding(0);
+        binding->bindBuffer(vbo, 0, 2 * sizeof(float));
+        binding->setFormat(2, GL_FLOAT);
+        binding->bindAttribute(0);
 
         auto ibo = glwrapper::Buffer::createShared();
         ibo->setData(indices, GL_STATIC_DRAW);
 
         vao->bindElementBuffer(ibo);
-
-        glwrapper::Buffer::unbind(GL_ARRAY_BUFFER);
-        glwrapper::VertexArray::unbind();
 
         std::string vert = R"(
             #version 460 core
@@ -102,7 +103,7 @@ int main() {
             }
         )";
 
-        auto program = glwrapper::Program::createUnique();
+        auto program = glwrapper::Program::createShared();
         program->attach(
                 glwrapper::Shader::fromString(GL_VERTEX_SHADER, vert),
                 glwrapper::Shader::fromString(GL_FRAGMENT_SHADER, frag)
@@ -114,7 +115,6 @@ int main() {
         while (!glfwWindowShouldClose(window)) {
             glClear(GL_COLOR_BUFFER_BIT);
 
-            vao->bind();
             vao->drawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
             glfwSwapBuffers(window);

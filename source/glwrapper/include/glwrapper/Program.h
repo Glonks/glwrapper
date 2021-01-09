@@ -1,7 +1,6 @@
 #pragma once
 
 #include <glwrapper/base/Instantiator.h>
-#include <glwrapper/Shader.h>
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
@@ -10,6 +9,8 @@
 #include <unordered_map>
 
 namespace glwrapper {
+
+    class Shader;
 
     class Program : public Instantiator<Program> {
     public:

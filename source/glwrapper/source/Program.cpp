@@ -1,4 +1,5 @@
 #include <glwrapper/Program.h>
+#include <glwrapper/Shader.h>
 #include <glwrapper/base/Log.h>
 #include <glwrapper/base/Assert.h>
 

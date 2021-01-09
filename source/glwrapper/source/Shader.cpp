@@ -1,6 +1,7 @@
 #include <glwrapper/Shader.h>
 #include <glwrapper/FileSource.h>
 #include <glwrapper/StringSource.h>
+#include <glwrapper/base/Source.h>
 #include <glwrapper/base/Log.h>
 #include <glwrapper/base/Assert.h>
 
