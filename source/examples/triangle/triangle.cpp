@@ -18,7 +18,7 @@ int main() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     const int WIDTH = 960;
-    const int HEIGHT = 540;
+    const int HEIGHT = 960;
 
     GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Test", nullptr, nullptr);
 
@@ -47,24 +47,25 @@ int main() {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+        auto vao = glwrapper::VertexArray::createShared();
+        vao->bind();
+
         float vertices[] = {
                 -0.5f, -0.5f,
                 0.5f, -0.5f,
                 0.0f, 0.5f
         };
 
-        auto vao = glwrapper::VertexArray::createUnique();
-        vao->bind();
-
-        auto vbo = glwrapper::Buffer::createUnique();
+        auto vbo = glwrapper::Buffer::createShared();
         vbo->bind(GL_ARRAY_BUFFER);
         vbo->setData(vertices, GL_STATIC_DRAW);
 
         vao->enable(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), reinterpret_cast<const void*>(0)); // Replace with VertexArray func
 
-        glwrapper::Buffer::unbind(GL_ARRAY_BUFFER);
-        glwrapper::VertexArray::unbind();
+        auto binding = vao->binding(0);
+        binding->bindAttribute(0);
+        binding->setFormat(2, GL_FLOAT);
+        binding->bindBuffer(vbo, 0, 2 * sizeof(float));
 
         std::string vert = R"(
             #version 460 core
@@ -83,28 +84,25 @@ int main() {
             #version 460 core
 
             in vec3 c_pos;
-            uniform float trans;
+
             out vec4 color;
 
             void main() {
-                color = vec4(c_pos * 0.5 + trans, 1.0f);
+                color = vec4(c_pos * 0.5 + 0.5, 1.0f);
             }
         )";
 
-        auto program = glwrapper::Program::createUnique();
+        auto program = glwrapper::Program::createShared();
         program->attach(
                 glwrapper::Shader::fromString(GL_VERTEX_SHADER, vert),
                 glwrapper::Shader::fromString(GL_FRAGMENT_SHADER, frag)
         );
         program->link();
+        program->bind();
 
         while (!glfwWindowShouldClose(window)) {
             glClear(GL_COLOR_BUFFER_BIT);
 
-            program->bind();
-            program->setUniform("trans", 0.5f);
-
-            vao->bind();
             vao->drawArrays(GL_TRIANGLES, 0, 3);
 
             glfwSwapBuffers(window);

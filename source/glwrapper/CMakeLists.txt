@@ -17,6 +17,9 @@ set(headers
 	${include_path}/Buffer.h
 	${include_path}/VertexArray.h
 	${include_path}/VertexBindingPoint.h
+	${include_path}/Texture.h
+	${include_path}/Sampler.h
+	${include_path}/FrameBuffer.h
 )
 
 set(sources
@@ -30,6 +33,9 @@ set(sources
 	${source_path}/Buffer.cpp
 	${source_path}/VertexArray.cpp
 	${source_path}/VertexBindingPoint.cpp
+	${source_path}/Texture.cpp
+	${source_path}/Sampler.cpp
+	${source_path}/FrameBuffer.cpp
 )
 
 add_library(${target}

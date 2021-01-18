@@ -18,7 +18,7 @@ int main() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     const int WIDTH = 960;
-    const int HEIGHT = 540;
+    const int HEIGHT = 960;
 
     GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Test", nullptr, nullptr);
 
@@ -47,20 +47,15 @@ int main() {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+        auto vao = glwrapper::VertexArray::createShared();
+        vao->bind();
+
         float vertices[] = {
                 -0.5f, -0.5f,
                 0.5f, -0.5f,
                 0.5f, 0.5f,
                 -0.5f, 0.5f
         };
-
-        unsigned int indices[] = {
-                0, 1, 2,
-                2, 3, 0
-        };
-
-        auto vao = glwrapper::VertexArray::createShared();
-        vao->bind();
 
         auto vbo = glwrapper::Buffer::createShared();
         vbo->bind(GL_ARRAY_BUFFER);
@@ -69,9 +64,14 @@ int main() {
         vao->enable(0);
 
         auto binding = vao->binding(0);
-        binding->bindBuffer(vbo, 0, 2 * sizeof(float));
-        binding->setFormat(2, GL_FLOAT);
         binding->bindAttribute(0);
+        binding->setFormat(2, GL_FLOAT);
+        binding->bindBuffer(vbo, 0, 2 * sizeof(float));
+
+        unsigned int indices[] = {
+                0, 1, 2,
+                2, 3, 0
+        };
 
         auto ibo = glwrapper::Buffer::createShared();
         ibo->setData(indices, GL_STATIC_DRAW);
