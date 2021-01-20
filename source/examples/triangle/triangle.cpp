@@ -106,7 +106,6 @@ int main() {
             vao->drawArrays(GL_TRIANGLES, 0, 3);
 
             glfwSwapBuffers(window);
-            glfwPollEvents();
         }
 
         glfwTerminate();
