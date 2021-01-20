@@ -1,5 +1,6 @@
 #include <glwrapper/Texture.h>
-#include <glwrapper/Sampler.h>
+
+#include <glm/gtc/type_ptr.hpp>
 
 #include <utility>
 
@@ -33,6 +34,22 @@ namespace glwrapper {
         glBindTextureUnit(unit, 0);
     }
 
+    void Texture::setParameter(GLenum pname, GLenum value) {
+        setParameter(pname, static_cast<GLint>(value));
+    }
+
+    void Texture::setParameter(GLenum pname, GLint value) {
+        glTextureParameteri(m_id, pname, value);
+    }
+
+    void Texture::setParameter(GLenum pname, GLfloat value) {
+        glTextureParameterf(m_id, pname, value);
+    }
+
+    void Texture::setParameter(GLenum pname, const glm::vec4& value) {
+        glTextureParameterfv(m_id, pname, glm::value_ptr(value));
+    }
+
     void Texture::subImage2D(GLint level, GLint xOffset, GLint yOffset, GLsizei width, GLsizei height, GLenum format,
                              GLenum type, const GLvoid* pixels) {
         glTextureSubImage2D(m_id, level, xOffset, yOffset, width, height, format, type, pixels);
@@ -48,6 +65,10 @@ namespace glwrapper {
 
     void Texture::storage3D(GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth) {
         glTextureStorage3D(m_id, levels, internalFormat, width, height, depth);
+    }
+
+    void Texture::generateMipMap() {
+        glGenerateTextureMipmap(m_id);
     }
 
     GLuint Texture::id() const {
