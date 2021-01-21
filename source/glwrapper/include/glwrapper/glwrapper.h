@@ -5,6 +5,8 @@
 
 #include <glwrapper/StringSource.h>
 #include <glwrapper/FileSource.h>
+#include <glwrapper/FrameBuffer.h>
+#include <glwrapper/RenderBuffer.h>
 #include <glwrapper/Program.h>
 #include <glwrapper/Shader.h>
 #include <glwrapper/Buffer.h>

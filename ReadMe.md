@@ -4,9 +4,6 @@ DSA is used wherever applicable.
 
 This project is purely for learning purposes.
 
-## TODO
-* FrameBuffers
-
 ## Examples
 
 `triangle`:\

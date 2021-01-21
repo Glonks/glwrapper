@@ -20,6 +20,7 @@ set(headers
 	${include_path}/Texture.h
 	${include_path}/Sampler.h
 	${include_path}/FrameBuffer.h
+	${include_path}/RenderBuffer.h
 )
 
 set(sources
@@ -36,6 +37,7 @@ set(sources
 	${source_path}/Texture.cpp
 	${source_path}/Sampler.cpp
 	${source_path}/FrameBuffer.cpp
+	${source_path}/RenderBuffer.cpp
 )
 
 add_library(${target}
