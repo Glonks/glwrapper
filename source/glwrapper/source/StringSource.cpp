@@ -1,6 +1,6 @@
 #include <glwrapper/StringSource.h>
 
-namespace glwrapper {
+namespace glw {
 
     StringSource::StringSource(const std::string& string) : m_source{string} {}
 

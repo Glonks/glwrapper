@@ -9,7 +9,7 @@
 #include <vector>
 #include <array>
 
-namespace glwrapper {
+namespace glw {
 
     class Texture;
     class RenderBuffer;

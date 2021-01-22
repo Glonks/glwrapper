@@ -1,6 +1,6 @@
 #include <glwrapper/RenderBuffer.h>
 
-namespace glwrapper {
+namespace glw {
 
     RenderBuffer::RenderBuffer() {
         glCreateRenderbuffers(1, &m_id);

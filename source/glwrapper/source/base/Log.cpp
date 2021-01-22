@@ -2,7 +2,7 @@
 
 #include <spdlog/sinks/stdout_color_sinks.h>
 
-namespace glwrapper {
+namespace glw {
 
     std::shared_ptr<spdlog::logger> Log::s_coreLogger;
     std::shared_ptr<spdlog::logger> Log::s_clientLogger;

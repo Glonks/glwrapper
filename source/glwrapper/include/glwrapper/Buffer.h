@@ -7,7 +7,7 @@
 #include <vector>
 #include <array>
 
-namespace glwrapper {
+namespace glw {
 
     class Buffer : public Instantiator<Buffer> {
     public:

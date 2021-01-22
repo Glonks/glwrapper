@@ -5,7 +5,7 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-namespace glwrapper {
+namespace glw {
 
     class Sampler : public Instantiator<Sampler> {
     public:

@@ -4,7 +4,7 @@
 
 #include <memory>
 
-namespace glwrapper {
+namespace glw {
 
     VertexArray::VertexArray() {
         glCreateVertexArrays(1, &m_id);

@@ -7,7 +7,7 @@
 #include <string>
 #include <memory>
 
-namespace glwrapper {
+namespace glw {
 
     class Source;
 

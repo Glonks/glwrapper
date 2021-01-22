@@ -4,7 +4,7 @@
 
 #include <utility>
 
-namespace glwrapper {
+namespace glw {
 
     Texture::Texture(const GLenum target) : m_target{target} {
         glCreateTextures(target, 1, &m_id);

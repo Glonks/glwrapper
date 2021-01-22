@@ -1,6 +1,6 @@
 #include <glwrapper/base/Source.h>
 
-namespace glwrapper {
+namespace glw {
 
     std::string Source::info() const {
         return "";

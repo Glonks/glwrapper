@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace glwrapper {
+namespace glw {
 
     class Source {
     public:

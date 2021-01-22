@@ -4,7 +4,7 @@
 
 #include <glad/glad.h>
 
-namespace glwrapper {
+namespace glw {
 
     class VertexArray;
     class Buffer;

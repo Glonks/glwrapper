@@ -2,7 +2,7 @@
 #include <glwrapper/VertexArray.h>
 #include <glwrapper/Buffer.h>
 
-namespace glwrapper {
+namespace glw {
 
     VertexBindingPoint::VertexBindingPoint(std::shared_ptr<VertexArray> vertexArray, GLuint bindingIndex)
             : m_vertexArray{std::move(vertexArray)},

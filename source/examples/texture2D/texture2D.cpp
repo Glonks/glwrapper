@@ -4,7 +4,7 @@
 #include <stb/stb_image.h>
 
 int main() {
-    glwrapper::Log::init();
+    glw::Log::init();
 
     int init_success = glfwInit();
 
@@ -75,15 +75,15 @@ int main() {
             }
         )";
 
-        auto program = glwrapper::Program::createShared();
+        auto program = glw::Program::createShared();
         program->attach(
-                glwrapper::Shader::fromString(GL_VERTEX_SHADER, vert),
-                glwrapper::Shader::fromString(GL_FRAGMENT_SHADER, frag)
+                glw::Shader::fromString(GL_VERTEX_SHADER, vert),
+                glw::Shader::fromString(GL_FRAGMENT_SHADER, frag)
         );
         program->link();
         program->bind();
 
-        auto vao = glwrapper::VertexArray::createShared();
+        auto vao = glw::VertexArray::createShared();
         vao->bind();
 
         float vertices[] = {
@@ -93,7 +93,7 @@ int main() {
                 -0.5f, 0.5f, 0.0f, 1.0f
         };
 
-        auto vbo = glwrapper::Buffer::createShared();
+        auto vbo = glw::Buffer::createShared();
         vbo->bind(GL_ARRAY_BUFFER);
         vbo->setData(vertices, GL_STATIC_DRAW);
 
@@ -115,12 +115,12 @@ int main() {
                 2, 3, 0
         };
 
-        auto ibo = glwrapper::Buffer::createShared();
+        auto ibo = glw::Buffer::createShared();
         ibo->setData(indices, GL_STATIC_DRAW);
 
         vao->bindElementBuffer(ibo);
 
-        auto sampler = glwrapper::Sampler::createShared();
+        auto sampler = glw::Sampler::createShared();
         sampler->setParameter(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         sampler->setParameter(GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         sampler->setParameter(GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -130,9 +130,8 @@ int main() {
         int width, height, channels;
         stbi_set_flip_vertically_on_load(1);
         stbi_uc* pixels = stbi_load("assets/cat.png", &width, &height, &channels, 0);
-        GLW_INFO(channels);
 
-        auto texture = glwrapper::Texture::createShared(GL_TEXTURE_2D);
+        auto texture = glw::Texture::createShared(GL_TEXTURE_2D);
         texture->storage2D(1, GL_RGBA8, width, height);
         texture->subImage2D(0, 0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, reinterpret_cast<const GLvoid*>(pixels));
         texture->bindTextureUnit(0);

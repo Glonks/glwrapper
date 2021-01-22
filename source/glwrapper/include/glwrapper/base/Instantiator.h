@@ -2,7 +2,7 @@
 
 #include <memory>
 
-namespace glwrapper {
+namespace glw {
 
     template <typename Subclass>
     class Instantiator {

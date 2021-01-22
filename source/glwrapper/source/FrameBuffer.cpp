@@ -6,7 +6,7 @@
 
 #include <set>
 
-namespace glwrapper {
+namespace glw {
 
     FrameBuffer::FrameBuffer() {
         glCreateFramebuffers(1, &m_id);

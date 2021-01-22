@@ -1,6 +1,6 @@
 #include <glwrapper/Buffer.h>
 
-namespace glwrapper {
+namespace glw {
 
     Buffer::Buffer() {
         glCreateBuffers(1, &m_id);

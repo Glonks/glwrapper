@@ -2,7 +2,7 @@
 
 #include <glm/gtc/type_ptr.hpp>
 
-namespace glwrapper {
+namespace glw {
 
     Sampler::Sampler() {
         glCreateSamplers(1, &m_id);

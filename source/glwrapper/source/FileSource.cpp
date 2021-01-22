@@ -3,7 +3,7 @@
 
 #include <fstream>
 
-namespace glwrapper {
+namespace glw {
 
     FileSource::FileSource(const std::string& filePath) : m_filePath{filePath}, m_valid{false} {
         load();

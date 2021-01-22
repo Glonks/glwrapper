@@ -8,7 +8,7 @@
 #include <set>
 #include <unordered_map>
 
-namespace glwrapper {
+namespace glw {
 
     class Shader;
 

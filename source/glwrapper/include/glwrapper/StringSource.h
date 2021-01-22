@@ -3,7 +3,7 @@
 #include <glwrapper/base/Instantiator.h>
 #include <glwrapper/base/Source.h>
 
-namespace glwrapper {
+namespace glw {
 
     class StringSource : public Source, public Instantiator<StringSource> {
     public:

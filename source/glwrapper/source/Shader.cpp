@@ -7,7 +7,7 @@
 
 #include <vector>
 
-namespace glwrapper {
+namespace glw {
 
     Shader::Shader(const GLenum type, std::shared_ptr<Source> source) : m_type{type},
                                                                         m_id{glCreateShader(type)},

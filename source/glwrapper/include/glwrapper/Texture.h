@@ -7,7 +7,7 @@
 
 #include <string>
 
-namespace glwrapper {
+namespace glw {
 
     class Sampler;
 

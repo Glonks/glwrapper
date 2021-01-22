@@ -5,7 +5,7 @@
 
 #include <glm/gtc/type_ptr.hpp>
 
-namespace glwrapper {
+namespace glw {
 
     Program::Program() : m_id{glCreateProgram()},
                          m_linked{false} {}

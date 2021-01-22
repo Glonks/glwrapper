@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 
 int main() {
-    glwrapper::Log::init();
+    glw::Log::init();
 
     int init_success = glfwInit();
 
@@ -47,7 +47,7 @@ int main() {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        auto vao = glwrapper::VertexArray::createShared();
+        auto vao = glw::VertexArray::createShared();
         vao->bind();
 
         float vertices[] = {
@@ -56,7 +56,7 @@ int main() {
                 0.0f, 0.5f
         };
 
-        auto vbo = glwrapper::Buffer::createShared();
+        auto vbo = glw::Buffer::createShared();
         vbo->bind(GL_ARRAY_BUFFER);
         vbo->setData(vertices, GL_STATIC_DRAW);
 
@@ -92,10 +92,10 @@ int main() {
             }
         )";
 
-        auto program = glwrapper::Program::createShared();
+        auto program = glw::Program::createShared();
         program->attach(
-                glwrapper::Shader::fromString(GL_VERTEX_SHADER, vert),
-                glwrapper::Shader::fromString(GL_FRAGMENT_SHADER, frag)
+                glw::Shader::fromString(GL_VERTEX_SHADER, vert),
+                glw::Shader::fromString(GL_FRAGMENT_SHADER, frag)
         );
         program->link();
         program->bind();

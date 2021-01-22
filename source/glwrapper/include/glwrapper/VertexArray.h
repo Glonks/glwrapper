@@ -7,7 +7,7 @@
 #include <map>
 #include <vector>
 
-namespace glwrapper {
+namespace glw {
 
     class Buffer;
     class VertexBindingPoint;
