@@ -1,7 +1,7 @@
 set(target triangle)
 
 set(sources
-	triangle.cpp
+	${target}.cpp
 )
 
 add_executable(${target}

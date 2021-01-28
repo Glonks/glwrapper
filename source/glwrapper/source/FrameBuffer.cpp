@@ -16,6 +16,12 @@ namespace glw {
         glDeleteFramebuffers(1, &m_id);
     }
 
+    FrameBuffer::FrameBuffer(GLuint id) : m_id{id} {}
+
+    std::unique_ptr<FrameBuffer> FrameBuffer::defaultFrameBuffer() {
+        return FrameBuffer::createUnique(0);
+    }
+
     void FrameBuffer::bind() const {
         glBindFramebuffer(GL_FRAMEBUFFER, m_id);
     }

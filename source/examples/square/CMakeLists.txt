@@ -1,7 +1,7 @@
 set(target square)
 
 set(sources
-	square.cpp
+	${target}.cpp
 )
 
 add_executable(${target}

@@ -1,7 +1,7 @@
 set(target texture2D)
 
 set(sources
-	texture2D.cpp
+	${target}.cpp
 )
 
 add_executable(${target}

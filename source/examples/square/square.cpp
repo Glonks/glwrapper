@@ -48,7 +48,6 @@ int main() {
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         auto vao = glw::VertexArray::createShared();
-        vao->bind();
 
         float vertices[] = {
                 -0.5f, -0.5f,

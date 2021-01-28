@@ -17,7 +17,10 @@ namespace glw {
     class FrameBuffer : public Instantiator<FrameBuffer> {
     public:
         FrameBuffer();
+        explicit FrameBuffer(GLuint id);
         virtual ~FrameBuffer();
+
+        static std::unique_ptr<FrameBuffer> defaultFrameBuffer();
 
         void bind() const;
         void bind(GLenum target) const;
