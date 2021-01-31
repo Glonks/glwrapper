@@ -9,7 +9,7 @@ namespace glw {
         virtual ~Source() = default;
 
         virtual std::string string() const = 0;
-        virtual std::string info() const;
+        virtual std::string info() const = 0;
     };
 
 }
