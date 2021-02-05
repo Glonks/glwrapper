@@ -32,7 +32,7 @@ int main() {
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
     glfwSetFramebufferSizeCallback(window, [](GLFWwindow* _window, int _width, int _height) {
-        glViewport(0, 0, _width, _height);
+        glw::setViewport(0, 0, _width, _height);
     });
 
     if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))) {
@@ -41,11 +41,10 @@ int main() {
         return -1;
     }
 
-    glViewport(0, 0, WIDTH, HEIGHT);
+    glw::setViewport(0, 0, WIDTH, HEIGHT);
 
     {
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        auto def_fbo = glw::FrameBuffer::defaultFrameBuffer();
 
         auto vao = glw::VertexArray::createShared();
 
@@ -112,7 +111,9 @@ int main() {
         program->bind();
 
         while (!glfwWindowShouldClose(window)) {
-            glClear(GL_COLOR_BUFFER_BIT);
+            glfwPollEvents();
+
+            def_fbo->clear(GL_COLOR_BUFFER_BIT);
 
             vao->drawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 

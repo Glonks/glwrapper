@@ -1,3 +1,4 @@
+#include <glwrapper/glwpch.h>
 #include <glwrapper/Texture.h>
 
 #include <glm/gtc/type_ptr.hpp>

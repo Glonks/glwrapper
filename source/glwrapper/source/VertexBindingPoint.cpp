@@ -1,3 +1,4 @@
+#include <glwrapper/glwpch.h>
 #include <glwrapper/VertexBindingPoint.h>
 #include <glwrapper/VertexArray.h>
 #include <glwrapper/Buffer.h>

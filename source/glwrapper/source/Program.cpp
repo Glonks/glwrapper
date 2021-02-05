@@ -1,3 +1,4 @@
+#include <glwrapper/glwpch.h>
 #include <glwrapper/Program.h>
 #include <glwrapper/Shader.h>
 #include <glwrapper/base/Log.h>

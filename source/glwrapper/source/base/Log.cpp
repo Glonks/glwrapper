@@ -1,3 +1,4 @@
+#include <glwrapper/glwpch.h>
 #include <glwrapper/base/Log.h>
 
 #include <spdlog/sinks/stdout_color_sinks.h>

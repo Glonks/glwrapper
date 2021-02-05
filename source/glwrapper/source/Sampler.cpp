@@ -1,3 +1,4 @@
+#include <glwrapper/glwpch.h>
 #include <glwrapper/Sampler.h>
 
 #include <glm/gtc/type_ptr.hpp>

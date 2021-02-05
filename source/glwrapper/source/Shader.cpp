@@ -1,3 +1,4 @@
+#include <glwrapper/glwpch.h>
 #include <glwrapper/Shader.h>
 #include <glwrapper/FileSource.h>
 #include <glwrapper/StringSource.h>

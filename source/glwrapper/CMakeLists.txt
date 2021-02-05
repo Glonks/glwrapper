@@ -10,6 +10,7 @@ set(headers
 	${include_path}/base/Log.h
 
 	${include_path}/glwrapper.h
+	${include_path}/State.h
 	${include_path}/StringSource.h
 	${include_path}/FileSource.h
 	${include_path}/Shader.h
@@ -27,6 +28,7 @@ set(sources
 	${source_path}/base/Source.cpp
 	${source_path}/base/Log.cpp
 
+	${source_path}/State.cpp
 	${source_path}/StringSource.cpp
 	${source_path}/FileSource.cpp
 	${source_path}/Shader.cpp
@@ -43,6 +45,11 @@ set(sources
 add_library(${target}
 	${headers}
 	${sources}
+)
+
+target_precompile_headers(${target}
+	PUBLIC
+		${include_path}/glwpch.h
 )
 
 target_include_directories(${target}
