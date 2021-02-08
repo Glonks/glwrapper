@@ -4,8 +4,6 @@
 
 #include <glad/glad.h>
 
-#include <set>
-
 namespace glw {
 
     void setViewport(GLint x, GLint y, GLsizei width, GLsizei height);
